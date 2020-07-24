@@ -8,8 +8,12 @@ import { faComment, faHeart } from '@fortawesome/free-regular-svg-icons';
 
 const LikeSection = props => {
   // 🔥 Make sure the parent of LikeSection is passing the right props!
-  const { likePost, numberOfLikes, postId } = props;
-
+  const { likePost, numberOfLikes, newComment, postId } = props;
+  const processInput = (e) => {
+    e.preventDefault();
+    const commentInput = document.querySelector(`#commentInput-${postId}`).value;
+    newComment(postId,"bob",commentInput);    
+  }
   return (
     <div>
       <div
@@ -21,6 +25,12 @@ const LikeSection = props => {
         </div>
         <div className='like-section-wrapper comment'>
           <FontAwesomeIcon icon={faComment} />
+        </div>
+        <div>
+          <form>
+          <input id={`commentInput-${postId}`} className="commentInput" type="text"></input>
+          <button type="submit" onClick={processInput}>&gt;</button>
+          </form>
         </div>
       </div>
       <p className='like-number'>{numberOfLikes} likes</p>

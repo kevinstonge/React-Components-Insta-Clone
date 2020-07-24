@@ -5,6 +5,7 @@ import Posts from "./components/Posts/Posts";
 import SearchBar from "./components/SearchBar/SearchBar";
 // Import the dummyData
 import dummyData from "./dummy-data";
+import uuid from "./uuid.js";
 import './App.css';
 
 const App = () => {
@@ -14,9 +15,9 @@ const App = () => {
   // To make the search bar work (which is stretch) we'd need another state to hold the search term.
   //the way I did this, I didn't need useState for search
   // const [query,setQuery] = useState();
-
+  const uid = uuid();
+  console.log(uid);
   const likePost = postId => {
-    console.log(postId);
     setPosts(
       posts.map(
         post=>{
@@ -44,12 +45,25 @@ const App = () => {
       //TODO: add to this to search comment text as well
     ))
   };
+  const newComment = (postId, username, comment) => {
+    setPosts(posts.map(p=>{
+      if (p.id === postId) {
+        p.comments.push({
+          "id":uuid(),
+          "username": username,
+          "text": comment,
+        });
+      }
+      return p;
+    }))
+    console.log('new comment');
+  }
 
   return (
     <div className='App'>
       {/* Add SearchBar and Posts here to render them */}
       <SearchBar searchPosts={searchPosts}/>
-      <Posts likePost={likePost} posts={posts}/>
+      <Posts likePost={likePost} posts={posts} newComment={newComment}/>
       {/* Check the implementation of each component, to see what props they require, if any! */}
     </div>
   );
