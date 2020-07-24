@@ -15,8 +15,6 @@ const App = () => {
   // To make the search bar work (which is stretch) we'd need another state to hold the search term.
   //the way I did this, I didn't need useState for search
   // const [query,setQuery] = useState();
-  const uid = uuid();
-  console.log(uid);
   const likePost = postId => {
     setPosts(
       posts.map(
@@ -56,7 +54,6 @@ const App = () => {
       }
       return p;
     }))
-    console.log('new comment');
   }
 
   return (
