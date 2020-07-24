@@ -36,9 +36,13 @@ const App = () => {
         - otherwise just return the post object unchanged.
      */
   };
-
-  const searchPosts = query => {
-    console.log(`searched for ${query}`);
+  const searchPosts = () => {
+    const queryInput = document.querySelector("#queryInput");
+    const query = queryInput.value;
+    setPosts(dummyData.filter(post=>{
+      if (post.username.includes(query)) { return post }
+      //TODO: add to this to search comment text as well
+    }))
   };
 
   return (

@@ -1,11 +1,14 @@
 // You do not need to change any code in this file for MVP
-import React from "react";
+import React, {useEffect} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { faHeart, faCircle, faCompass } from '@fortawesome/free-regular-svg-icons';
 import "./SearchBar.css";
 
 const SearchBar = (props) => {
+  useEffect(() => {
+    document.querySelector("#queryInput").focus();
+  });
   return (
     <div className="search-bar-wrapper">
       <div className="social">
@@ -15,7 +18,8 @@ const SearchBar = (props) => {
         <input
           type="text"
           placeholder="Search"
-          onChange={()=>props.searchPosts('something')}
+          id="queryInput"
+          onChange={(event)=>props.searchPosts()}
           //need to figure out how to interpolate the input element's value^
         />
       </form>
