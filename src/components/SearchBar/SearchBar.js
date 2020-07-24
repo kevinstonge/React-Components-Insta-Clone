@@ -15,6 +15,8 @@ const SearchBar = (props) => {
         <input
           type="text"
           placeholder="Search"
+          onChange={()=>props.searchPosts('something')}
+          //need to figure out how to interpolate the input element's value^
         />
       </form>
       <div className="social-wrapper">
