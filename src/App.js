@@ -12,7 +12,8 @@ const App = () => {
   const [posts, setPosts] = useState(dummyData);
   // This state is the source of truth for the data inside the app. You won't be needing dummyData anymore.
   // To make the search bar work (which is stretch) we'd need another state to hold the search term.
-  const [query,setQuery] = useState();
+  //the way I did this, I didn't need useState for search
+  // const [query,setQuery] = useState();
 
   const likePost = postId => {
     console.log(postId);
@@ -39,10 +40,9 @@ const App = () => {
   const searchPosts = () => {
     const queryInput = document.querySelector("#queryInput");
     const query = queryInput.value;
-    setPosts(dummyData.filter(post=>{
-      if (post.username.includes(query)) { return post }
+    setPosts(dummyData.filter(post=>post.username.includes(query)
       //TODO: add to this to search comment text as well
-    }))
+    ))
   };
 
   return (

@@ -19,6 +19,7 @@ const SearchBar = (props) => {
           type="text"
           placeholder="Search"
           id="queryInput"
+          autoComplete="off"
           onChange={(event)=>props.searchPosts()}
           //need to figure out how to interpolate the input element's value^
         />
