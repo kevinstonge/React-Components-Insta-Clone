@@ -1,33 +1,29 @@
-/* 
-  Start here and work your way down the nested components.
-  Not all files in the project need code added.
-  Look at each file to see what props need to be passed!
-*/
-
 // Import the state hook
 import React, { useState } from 'react';
 // Import the Posts (plural!) and SearchBar components, since they are used inside App component
-// import LikeSection from "./components/Posts/LikeSection";
-// import Post from "./components/Posts/Post";
-// import PostHeader from "./components/Posts/PostHeader";
 import Posts from "./components/Posts/Posts";
 import SearchBar from "./components/SearchBar/SearchBar";
-// import Comment from "./components/Comments/Comment";
-// import Comments from "./components/Comments/Comments";
-import dummyData from "./dummy-data";
-
 // Import the dummyData
+import dummyData from "./dummy-data";
 import './App.css';
 
 const App = () => {
   // Create a state called `posts` to hold the array of post objects, **initializing to dummyData**.
   const [posts, setPosts] = useState(dummyData);
-  // const [query,setQuery] = useState();
   // This state is the source of truth for the data inside the app. You won't be needing dummyData anymore.
   // To make the search bar work (which is stretch) we'd need another state to hold the search term.
+  const [query,setQuery] = useState();
 
   const likePost = postId => {
-    console.log(`${postId} was liked`)
+    console.log(postId);
+    setPosts(
+      posts.map(
+        post=>{
+          if (post.id===postId) { post.likes = post.likes+1; }
+          return post;
+        }
+      )
+    )
     /*
       This function serves the purpose of increasing the number of likes by one, of the post with a given id.
 
