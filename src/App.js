@@ -38,8 +38,19 @@ const App = () => {
   };
   const searchPosts = () => {
     const queryInput = document.querySelector("#queryInput");
-    const query = queryInput.value;
-    setPosts(dummyData.filter(post=>post.username.includes(query)
+    const query = queryInput.value.toLowerCase();
+    setPosts(dummyData.filter(post=>{
+      const stringifiedComments = post.comments.map(c=>{
+        return `${c.username} ${c.text}`;
+      }).join(" ");
+      if (
+        post.username.toLowerCase().includes(query) ||
+        post.likes.toString().toLowerCase().concat(" likes").includes(query) ||
+        post.timestamp.toLowerCase().includes(query) ||
+        stringifiedComments.toLowerCase().includes(query)
+      ) { return true; }
+      else { return false; }
+    }
       //TODO: add to this to search comment text as well
     ))
   };
