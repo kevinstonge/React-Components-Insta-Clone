@@ -19,7 +19,7 @@ const LikeSection = props => {
     if (commentInputVisible===true) {
       document.querySelector(`#commentInput-${postId}`).focus();
     }
-  })
+  },[commentInputVisible])
   return (
     <div>
       <div

@@ -8,7 +8,7 @@ import "./SearchBar.css";
 const SearchBar = (props) => {
   useEffect(() => {
     document.querySelector("#queryInput").focus();
-  });
+  },[]);
   return (
     <div className="search-bar-wrapper">
       <div className="social">
