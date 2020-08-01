@@ -39,11 +39,16 @@
 .like-section {
   display: flex;
   justify-content: flex-start;
+  align-items: center;
 }
 .like-section-wrapper {
   height: 10px;
   width: 10px;
   margin: 10px;
+  cursor: pointer;
+}
+.like:hover {
+  color: red;
 }
 .like-number {
   width: 100px;
